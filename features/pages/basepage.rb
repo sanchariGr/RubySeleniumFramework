@@ -7,7 +7,7 @@ class HomePage
 
 
   def initialize(driver)
-    @driver = Selenium::WebDriver.for :chrome
+    @driver = Selenium::WebDriver.for :firefox
   end
 
   def goto_homepage

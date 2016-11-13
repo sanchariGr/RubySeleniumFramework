@@ -4,7 +4,7 @@ Feature:
   Scenario:
 
 
-    Given I visit ""
+    Given I visit "http://www.imdb.com/chart/top"
     When I search for the top "250"
     Then I should see the top "250" movies displayed
     And the movie "" is present in the list
