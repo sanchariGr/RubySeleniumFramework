@@ -7,19 +7,18 @@ class HomePage
 
 
   def initialize(driver)
-    @driver = Selenium::WebDriver.for :firefox
+    @driver = Selenium::WebDriver.for :chrome
   end
 
   def goto_homepage
     @driver.navigate.to "http://www.imdb.com/chart/top"
     text_displayed = @driver.find_element(:css, ".article h3").text
-    # assert(text_displayed.include?('IMDb Charts'))
     @driver.expect(text_displayed).equal?('IMDb Charts')
   end
 
   def movie_name_displayed(name)
-    moviename = @driver.find_element(:xpath,"//tbody[@class='lister-list']//tr[1]//td[@class='titleColumn']").text
-    moviename.contains("")
+    movie_name = @driver.find_element(:xpath,"//tbody[@class='lister-list']//tr[1]//td[@class='titleColumn']").text
+    movie_name.contains("")
   end
 
   def select_top_rated_option(text)
