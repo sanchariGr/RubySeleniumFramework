@@ -7,28 +7,34 @@ class HomePage
 
 
   def initialize(driver)
-    @driver = Selenium::WebDriver.for :chrome
+    @driver = Selenium::WebDriver.for :firefox
   end
 
   def goto_homepage
     @driver.navigate.to "http://www.imdb.com/chart/top"
+    # text_displayed = @driver.find_element(:css, ".ab_widget h1").text
+    # text_displayed.should == "Top Box Office (US)"
     text_displayed = @driver.find_element(:css, ".article h3").text
-    @driver.expect(text_displayed).equal?('IMDb Charts')
+    text_displayed.should == "IMDb Charts"
   end
 
   def movie_name_displayed(name)
     movie_name = @driver.find_element(:xpath,"//tbody[@class='lister-list']//tr[1]//td[@class='titleColumn']").text
-    movie_name.contains("")
+    puts "*************************************"
+    puts movie_name
+    puts "*************************************"
+    # movie_name.contains("")
   end
 
-  def select_top_rated_option(text)
-    @driver.find_element(:xpath,"//div[@class='table-cell primary']/a[text()='#{text}']").click
+  def select_top_rated_option()
+    @driver.find_element(:xpath,"//a[contains(text(),'Top Rated Movies')]").click
   end
 
   def top_results_displayed
-    page_header_text = @driver.find_element(:css, ".byLine").text
+    page_header_text = @driver.find_element(:css, ".byline").text
     # assert(page_header_text.include?('Top 250 as rated by IMDb Users'))
-    @driver.expect(page_header_text).equal?('Top 250 as rated by IMDb Users')
+    # @driver.expect(page_header_text).equal?('Top 250 as rated by IMDb Users')
+    page_header_text.should == "Top 250 as rated by IMDb Users"
   end
 
 

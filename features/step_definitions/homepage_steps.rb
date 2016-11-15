@@ -7,7 +7,7 @@ end
 
 When(/^I search for the top "([^"]*)"$/) do |option|
   @HomePage = HomePage.new(@driver)
-  @HomePage.select_top_rated_option(option)
+  @HomePage.select_top_rated_option()
 end
 
 Then(/^I should see the top "([^"]*)" movies displayed$/) do |arg|

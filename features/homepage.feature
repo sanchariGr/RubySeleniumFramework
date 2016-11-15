@@ -5,7 +5,7 @@ Feature: IMDb top 250 search and sort
 
 
     Given I visit "http://www.imdb.com/chart/top"
-    When I search for the top "Top Rated Movies"
+#    When I search for the top "Top Rated Movies"
     Then I should see the top "250" movies displayed
     And the movie "" is present in the list
 
