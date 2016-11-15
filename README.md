@@ -1,8 +1,8 @@
 # RubySeleniumFramework
 A simple Ruby Selenium automation framework using Capybara and a BDD Framework called Cucumber
 
-# Capybara helps you test web applications by simulating how a real user would interact with your app
-# Cucumber is a simple BDD framework that makes your automation tests more readable
+Capybara helps you test web applications by simulating how a real user would interact with your app
+Cucumber is a simple BDD framework that makes your automation tests more readable
 
 The suite has been designed taking into account the Page-Object Model which helps keep your tests maintainable and
 reusable. Page level methods have been separated into a separate class which finds a web-element and fills values etc.
