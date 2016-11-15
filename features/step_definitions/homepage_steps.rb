@@ -1,54 +1,57 @@
 
 
 Given(/^I visit "([^"]*)"$/) do |url|
-  @HomePage = HomePage.new(@driver)
-  text_displayed = @HomePage.goto_homepage(url)
-  assert_text("Top Box Office (US)", text_displayed)
+  page = HomePage.new
+  text_displayed = page.goto_homepage(url)
+  assert_equal("Top Box Office (US)",text_displayed)
 end
 
 When(/^I search for the top "([^"]*)"$/) do |option|
-  @HomePage = HomePage.new(@driver)
-  @HomePage.select_top_rated_option(option)
+  page = HomePage.new
+  page.select_top_rated_option(option)
 end
 
 Then(/^I should see the top (\d+) movies displayed$/) do |arg|
-  @HomePage = HomePage.new(@driver)
-  text = @HomePage.top_results_displayed
-  assert_text("Top 250 as rated by IMDb Users", text)
+  page = HomePage.new
+  text = page.top_results_displayed
+  assert_equal("Top 250 as rated by IMDb Users", text)
 end
 
 And(/^the movie "([^"]*)" is present in the list$/) do |movie_name|
-  @HomePage = HomePage.new(@driver)
-  @HomePage.movie_name_displayed(movie_name)
+  page = HomePage.new
+  name_of_a_movie = page.movie_name_displayed(movie_name)
+  assert_equal("The Shawshank Redemption",name_of_a_movie)
 end
 
 Given(/^I wish to sort the displayed list$/) do
-  @HomePage = HomePage.new(@driver)
-  @HomePage.sort_dropdown
+  page = HomePage.new
+  page.sort_dropdown
 end
 
 When(/^I select option "([^"]*)" from the sort menu$/) do |count|
-  @HomePage = HomePage.new(@driver)
-  @HomePage.select_sort_option(count)
+  page = HomePage.new
+  page.select_sort_option(count)
 end
 
-Then(/^I should see the top (\d+) sorted accordingly$/) do |arg|
-  @HomePage = HomePage.new(@driver)
-  @HomePage.verify_proper_sort
+Then(/^I should see the top (\d+) sorted accordingly and "([^"]*)" is present in the list$/) do |arg1, name|
+  page = HomePage.new
+  movie_name = page.verify_proper_sort(name)
+  assert_equal("The Shawshank Redemption",movie_name)
 end
 
 Given(/^I wish to search movies by genre "([^"]*)"$/) do |genre_type|
-  @HomePage = HomePage.new(@driver)
-  @HomePage.genre_search(genre_type)
+  page = HomePage.new
+  page.genre_search
 end
 
 Then(/^the highest rated movies of the selected genre should be displayed to me$/) do
-  @HomePage = HomePage.new(@driver)
-  search_successful = @HomePage.verify_genre_search_successful
-  assert_text("Highest Rated Western Feature Films With At Least 25000 Votes", search_successful)
+  page = HomePage.new
+  search_successful = page.verify_genre_search_successful
+  assert_equal("Highest Rated Western Feature Films With At Least 25000 Votes", search_successful)
 end
 
 And(/^I should be able to sort the list by rating$/) do
-  @HomePage = HomePage.new(@driver)
-  @HomePage.sort_genre
+  page = HomePage.new
+  page.sort_genre
 end
+

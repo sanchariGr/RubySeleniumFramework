@@ -1,6 +1,6 @@
 Feature: IMDb top 250 search and sort
 
-
+  @javascript
   Scenario: Search IMDb for the top rated movies based on different sort options and
 
 
@@ -12,7 +12,7 @@ Feature: IMDb top 250 search and sort
 
     Given I wish to sort the displayed list
     When I select option "2" from the sort menu
-    Then I should see the top 250 sorted accordingly
+    Then I should see the top 250 sorted accordingly and "The Shawshank Redemption" is present in the list
 
 
     Given I wish to search movies by genre "Western"
