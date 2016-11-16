@@ -20,4 +20,6 @@ The step_definitions folder containing the step definition files which invokes t
 (with a higher Firefox version 'Capybara::Selenium::Driver' has to be set with 'Remote::Capabilities.firefox(marionette: false)')
 - Run tests using 'cucumber' from the project location
 
+** Run browser in the background to make tests run faster.
+
 
