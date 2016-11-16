@@ -48,9 +48,9 @@ class HomePage
   end
 
 
-  def genre_search
+  def genre_search(genre_type)
     page.execute_script "window.scrollBy(0,10000)"
-    find_link('Western').click
+    find_link("#{genre_type}").click
   end
 
 

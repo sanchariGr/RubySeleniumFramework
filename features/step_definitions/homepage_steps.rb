@@ -41,7 +41,7 @@ end
 
 Given(/^I wish to search movies by genre "([^"]*)"$/) do |genre_type|
   page = HomePage.new
-  page.genre_search
+  page.genre_search(genre_type)
 end
 
 Then(/^the highest rated movies of the selected genre should be displayed to me$/) do
