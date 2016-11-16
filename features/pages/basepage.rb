@@ -49,8 +49,8 @@ class HomePage
 
 
   def genre_search
-    page.execute_script("$('.quicklinks li:contains(\"Western\")')").click()
-    # find("ul.ui-autocomplete li.ui-menu-item", text: options[:select]).click()
+    page.execute_script "window.scrollBy(0,10000)"
+    find_link('Western').click
   end
 
 
@@ -63,6 +63,7 @@ class HomePage
   def sort_genre
     find(:css,'.user_rating').click
   end
+
 
   def teardown
     #quit the driver
