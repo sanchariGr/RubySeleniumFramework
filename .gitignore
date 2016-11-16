@@ -1,0 +1,7 @@
+
+# Ignore all DS_Store folders
+.DS_Store
+
+# Ignore all .idea files
+*.idea
+*.idea/workspace.xml
