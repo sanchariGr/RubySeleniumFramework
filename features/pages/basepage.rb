@@ -2,6 +2,7 @@ require 'rubygems'
 require 'selenium/webdriver'
 require 'capybara/cucumber'
 require 'capybara/dsl'
+require 'pry'
 
 
 class HomePage
@@ -49,7 +50,12 @@ class HomePage
 
 
   def genre_search(genre_type)
-    page.execute_script "window.scrollBy(0,10000)"
+    page.execute_script "window.scrollBy(0,1000)"
+
+    # The link "Western" needs to be in focus for selenium to be able to click it. This is done via a page.execute with
+    # a explicit javascript event trigger .focus()
+
+    page.execute_script("($('.ab_widget .quicklinks li.subnav_item_main a').last()).focus()")
     find_link("#{genre_type}").click
   end
 
